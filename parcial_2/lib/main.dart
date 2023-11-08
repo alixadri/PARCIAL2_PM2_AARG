@@ -1,5 +1,8 @@
+
+
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+
 void main() {
   runApp(MyApp());
 }
@@ -16,7 +19,7 @@ class Cooters {
 
 class MyApp extends StatelessWidget {
   final List<Cooters> CootersList = [
-    Cooters(
+  Cooters(
       image:
           'https://www.nicepng.com/png/detail/840-8403859_alarm-clock-svg-png-icon-free-download-alarm.png',
       name: 'CARD 1',
@@ -35,7 +38,7 @@ class MyApp extends StatelessWidget {
       image:
           'https://clipground.com/images/android-logo-3d-png-5.png', // Reemplace esto con una URL de imagen válida
       name: 'CARD 4',
-    ),
+    )
   ];
 
   @override
@@ -43,7 +46,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        appBar: AppBar(
+         appBar: AppBar(
           backgroundColor: Color.fromARGB(255, 63, 200, 56),
           leading: IconButton(
             icon: const Icon(Icons.menu),
@@ -61,6 +64,7 @@ class MyApp extends StatelessWidget {
             ),
           ],
         ),
+       
         body: ListView.builder(
           itemCount: CootersList.length,
           itemBuilder: (context, index) {
@@ -71,8 +75,9 @@ class MyApp extends StatelessWidget {
                   Text('${CootersList[index].name}'),
                   ElevatedButton(
                     onPressed: () {
+                      showPokemonInfo(context, CootersList[index]);
                     },
-                    child: Text('Botón de la tarjeta $index'), 
+                    child: Text('CARDS'),
                   ),
                 ],
               ),
@@ -82,55 +87,14 @@ class MyApp extends StatelessWidget {
       ),
     );
   }
-}
-void showPokemonInfo(BuildContext context, Cooters cooters) {
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) {
-          return Scaffold(
-            appBar: AppBar(
-          leading: IconButton(icon: const Icon(Icons.menu),
-          onPressed: () {
-          },),
-          title: Text(cooters.name),
-          actions: [
-            IconButton(
-              icon: const Icon(Icons.search),
-              onPressed: () {
-              },
-            ),
-            IconButton(
-              icon: const Icon(Icons.more_vert),
-              onPressed: () {
-              },
-            ),
-          ],
-        ),
-            body: Column(
-              children: [
-                Image.network(cooters.image),
-                Text(' ${cooters.name}'),
-                ElevatedButton(
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
-                  child: Text(''),
-                ),
-              ],
-            ),
-          );
-        },
-      ),
-    );
-  }
 
- void showUserInfo(BuildContext context) {
+  
+  void showUserInfo(BuildContext context) {
     showDialog(
       context: context,
       builder: (context) {
         return CupertinoAlertDialog(
-          title: Text('omg...... que parcial'),
+          title: Text('........'),
           actions: [
             CupertinoDialogAction(
               child: Text('Cerrar'),
@@ -143,54 +107,34 @@ void showPokemonInfo(BuildContext context, Cooters cooters) {
       },
     );
   }
-  class CootersList extends StatelessWidget {
-  final List<Cooters> Cooters_List;
+}
 
-  CootersList({required this.Cooters_List});
 
-  @override
-  Widget build(BuildContext context) {
-    return ListView.builder(
-      itemCount: Cooters_List.length,
-      itemBuilder: (context, index) {
-        return ListTile(
-          leading: CircleAvatar(
-            backgroundImage: NetworkImage(Cooters_List[index].image),
-          ),
-          title: Text(Cooters_List[index].name),
-          trailing: IconButton(
-            icon: Icon(Icons.account_box),
-            onPressed: () {
-              
-            },
-          ),
-        );
-      },
-    );
-  }
-  }
-  void iconos(BuildContext context, Cooters cooters) {
+  void showPokemonInfo(BuildContext context, Cooters cooters) {
     Navigator.push(
       context,
       MaterialPageRoute(
         builder: (context) {
           return Scaffold(
             appBar: AppBar(
-          leading: IconButton(icon: const Icon(Icons.menu),
-          onPressed: () {
-          },),
-          title: Text(cooters.name),
-          actions: [
-          ],
-        ),
+
+              leading: IconButton(
+                icon: const Icon(Icons.menu_outlined),
+                onPressed: () {},
+              ),
+              title: Text(cooters.name),
+              backgroundColor:Color.fromARGB(255, 63, 200, 56),
+              actions: [
+              ],
+            ),
             body: Column(
               children: [
                 Image.network(cooters.image),
                 ElevatedButton(
                   onPressed: () {
-                    Navigator.pop(context);
+                    showUserInfo(context);
                   },
-                  child: Text('Botón de la tarjeta'),
+                  child: Text('POPUP'),
                 ),
               ],
             ),
@@ -199,17 +143,29 @@ void showPokemonInfo(BuildContext context, Cooters cooters) {
       ),
     );
   }
-   void show(BuildContext context) {
+
+class UserInfoWidget extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return ElevatedButton(
+      onPressed: () {
+        showUserInfo(context);
+      },
+      child: Text('+'),
+    );
+  }
+}
+ void showUserInfo(BuildContext context) {
     showDialog(
       context: context,
       builder: (context) {
         return CupertinoAlertDialog(
-         title: Text('POPUP'),
+         title: Text('POPUP ...................'),
           content: const Column(
             mainAxisSize: MainAxisSize.min,
             children: [
               Center(
-                child: Text('FLAMMA SPECIEM PERMISIT NUNC LONGO ALTAE ✌🏻️'),
+                child: Text('flamma speciem permisit nunc longo altee bracchia stagna diverso deorum'),
               )
             ],
           ), 
@@ -225,4 +181,6 @@ void showPokemonInfo(BuildContext context, Cooters cooters) {
       },
     );
   }
+
+
 
