@@ -1,11 +1,44 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class Cooters {
+  
+  final String image;
+  final String name;
+
+  Cooters({
+    required this.image,
+     required this.name,
+  });
+}
+  class MyApp extends StatelessWidget {
+  final List<Cooters> Cooters_list = [
+
+    Cooters(
+      image: 'https://www.nicepng.com/png/detail/840-8403859_alarm-clock-svg-png-icon-free-download-alarm.png',
+      name: 'CARD 1',
+    ),
+    Cooters(
+      image: 'https://cdn.icon-icons.com/icons2/729/PNG/512/amazon_icon-icons.com_62714.png',
+       name: 'CARD 2',
+    
+    ),
+    Cooters(
+      image: 'https://th.bing.com/th/id/OIP.XZgCSXTzt-ey7QUVECDbxgHaHa?pid=ImgDet&rs=1',
+      name: 'CARD 3',
+    ),
+     Cooters(
+      image: '',
+      name: 'CARD 4',
+    ),
+  ];
+
+
+
+
 
   // This widget is the root of your application.
   @override
@@ -33,7 +66,11 @@ class MyApp extends StatelessWidget {
             
           ],
         ),
-        
+        body: Column(
+          children: [
+          
+          ],
+        ),
       ),
     );
   }
